@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>For my sweet girl 🍨💖</title>
+<style>
+  :root{
+    --bg1:#fff6fb;
+    --bg2:#f8fffe;
+    --card:#ffffff;
+    --text:#3a3344;
+    --muted:#6d6577;
+    --rose:#ff7fb0;
+    --shadow:0 10px 25px rgba(0,0,0,.08);
+    --glow:0 10px 30px rgba(255,158,207,.35);
+    --radius:18px;
+    --transition:260ms cubic-bezier(.2,.8,.2,1);
+  }
+  /* cute heart cursor */
+  html,body,button,a,img{
+    cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 24 24'><path fill='%23ff7fb0' d='M12 21s-6.716-4.065-9.192-7.192C.94 11.657 1.31 8.58 3.39 6.86c1.7-1.43 4.24-1.27 5.87.36L12 9l2.74-1.78c1.63-1.63 4.17-1.79 5.87-.36c2.08 1.72 2.45 4.8.58 6.95C18.716 16.935 12 21 12 21z'/></svg>") 8 2, auto;
+  }
+  body{
+    margin:0;
+    min-height:100vh;
+    color:var(--text);
+    font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Helvetica Neue",Arial,system-ui,sans-serif;
+    background:
+      radial-gradient(1200px 800px at 10% -10%, var(--bg2), transparent 60%),
+      radial-gradient(1000px 700px at 110% 10%, #fff1f8, transparent 55%),
+      linear-gradient(180deg, var(--bg1), #fdfdff);
+    overflow-x:hidden;
+  }
+
+  /* floating hearts backdrop */
+  .hearts{ position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+  .hearts span{
+    position:absolute; bottom:-40px;
+    font-size:18px; color:transparent;
+    text-shadow:0 0 0 var(--rose);
+    filter:drop-shadow(0 2px 6px rgba(255,127,176,.25));
+    animation:floatUp linear infinite;
+    opacity:.22;
+  }
+  .hearts span:nth-child(odd){ text-shadow:0 0 0 #ffb4d4; }
+  @keyframes floatUp{
+    0%{ transform:translateY(0) translateX(0) rotate(0) scale(.9); opacity:0; }
+    12%{ opacity:.28; }
+    60%{ opacity:.22; }
+    100%{ transform:translateY(-110vh) translateX(30px) rotate(12deg) scale(1.15); opacity:0; }
+  }
+
+  .wrap{ position:relative; z-index:1; max-width:1000px; margin:0 auto; padding:28px 18px 60px; }
+  .card{
+    background:var(--card);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:22px 18px;
+    backdrop-filter:saturate(120%) blur(2px);
+  }
+
+  header h1{
+    margin:8px 8px 14px; font-weight:800; letter-spacing:.2px;
+    font-size:clamp(22px,3.6vw,30px); display:flex; align-items:center; gap:.5ch;
+  }
+  header p{ margin:0 8px 8px; color:var(--muted); font-size:14px; }
+
+  .gallery{ display:grid; gap:14px; margin-top:14px; }
+  @media (min-width:760px){ .gallery{ grid-template-columns:1fr 1fr; } }
+
+  figure{
+    margin:0;
+    background:linear-gradient(180deg,#fff,#fffefd);
+    border-radius:calc(var(--radius) - 6px);
+    box-shadow:var(--shadow);
+    overflow:hidden; position:relative;
+    transition:transform var(--transition), box-shadow var(--transition), filter var(--transition);
+  }
+  figure::after{
+    content:""; position:absolute; inset:0; pointer-events:none; opacity:.6;
+    background:
+      radial-gradient(240px 140px at 20% 20%, rgba(255,158,207,.16), transparent 50%),
+      radial-gradient(280px 200px at 80% 10%, rgba(169,240,225,.14), transparent 60%);
+  }
+  figure:hover, figure:focus-within{ transform:translateY(-3px) scale(1.02); box-shadow:var(--glow); }
+
+  .pic{
+    display:block; width:100%;
+    height:clamp(180px,32vw,300px);
+    object-fit:cover; user-select:none; -webkit-user-drag:none;
+    transition:transform var(--transition), filter var(--transition);
+  }
+  figure:hover .pic{ transform:scale(1.03); filter:saturate(1.05); }
+
+  figcaption{
+    padding:10px 12px 12px; font-weight:600; color:#594f62;
+    display:flex; align-items:center; gap:8px;
+  }
+  .tag{
+    font-size:12px; font-weight:700; color:#8c819b; background:#f7f3ff;
+    border-radius:999px; padding:4px 10px; border:1px solid #ece7ff;
+  }
+
+  .secret{ margin:16px 8px 6px; display:flex; flex-direction:column; align-items:center; gap:10px; }
+  .secret button{
+    appearance:none; border:none;
+    background:linear-gradient(180deg,#ffe5f2,#ffdff0);
+    color:#7a4c64; font-weight:800; padding:10px 16px; border-radius:999px;
+    box-shadow:0 6px 16px rgba(255,127,176,.25), inset 0 1px 0 rgba(255,255,255,.9);
+    transition:transform var(--transition), box-shadow var(--transition), filter var(--transition);
+  }
+  .secret button:hover{ transform:translateY(-2px); box-shadow:var(--glow); filter:saturate(1.02); }
+  .secret button:active{ transform:translateY(0); }
+
+  .hidden-msg{
+    max-width:720px; text-align:center; background:#fff;
+    border:1px dashed #ffd0e6; border-radius:calc(var(--radius) - 8px);
+    padding:12px 14px; color:#6a3d52; box-shadow:0 6px 18px rgba(255,127,176,.12);
+    transform:translateY(6px) scale(.98);
+    opacity:0; visibility:hidden;
+    transition:opacity var(--transition), transform var(--transition), visibility var(--transition);
+  }
+  .hidden-msg.show{ opacity:1; visibility:visible; animation:reveal 600ms cubic-bezier(.2,1.2,.2,1) forwards; }
+  @keyframes reveal{
+    0%{ transform:translateY(12px) scale(.96); opacity:0; }
+    60%{ transform:translateY(-4px) scale(1.02); opacity:1; }
+    100%{ transform:translateY(0) scale(1); }
+  }
+
+  /* modal */
+  .modal{ position:fixed; inset:0; display:none; place-items:center; background:rgba(255,202,226,.28); backdrop-filter:blur(2px); z-index:10; }
+  .modal.show{ display:grid; animation:fadeIn 200ms ease-out; }
+  @keyframes fadeIn{ from{opacity:0} to{opacity:1} }
+  .modal-card{
+    width:min(92vw,420px); background:#fff; border-radius:calc(var(--radius) - 6px);
+    box-shadow:var(--glow); padding:16px 16px 14px; position:relative;
+    transform-origin:center; animation:popIn 360ms cubic-bezier(.2,1.3,.2,1);
+  }
+  @keyframes popIn{
+    0%{ transform:scale(.82) translateY(8px); opacity:0; }
+    60%{ transform:scale(1.04) translateY(-2px); opacity:1; }
+    100%{ transform:scale(1) translateY(0); }
+  }
+  .modal h3{ margin:0 0 6px; font-size:18px; }
+  .modal p{ margin:0; color:var(--muted); }
+  .close-x{
+    position:absolute; top:8px; right:8px; width:34px; height:34px;
+    border:none; border-radius:10px; background:#fff5fb; color:#b85a86;
+    font-size:18px; font-weight:700; box-shadow:0 4px 12px rgba(255,127,176,.18);
+    display:grid; place-items:center; transition:transform var(--transition), box-shadow var(--transition);
+  }
+  .close-x:hover{ transform:translateY(-1px); box-shadow:var(--glow); }
+
+  footer{ margin-top:14px; text-align:center; color:#7a7284; font-size:13px; }
+</style>
+</head>
+<body>
+  <!-- floating hearts -->
+  <div class="hearts" aria-hidden="true">
+    <span style="left:6%;  animation-duration:9.5s; animation-delay:0.2s;">💖</span>
+    <span style="left:18%; animation-duration:10.2s; animation-delay:1.0s;">💗</span>
+    <span style="left:28%; animation-duration:8.8s; animation-delay:0.6s;">💞</span>
+    <span style="left:38%; animation-duration:11.2s; animation-delay:1.8s;">💖</span>
+    <span style="left:48%; animation-duration:9.0s; animation-delay:0.4s;">💗</span>
+    <span style="left:58%; animation-duration:10.6s; animation-delay:1.4s;">💞</span>
+    <span style="left:68%; animation-duration:9.8s; animation-delay:0.9s;">💖</span>
+    <span style="left:78%; animation-duration:10.9s; animation-delay:1.7s;">💗</span>
+    <span style="left:88%; animation-duration:9.3s; animation-delay:0.5s;">💞</span>
+    <span style="left:15%; animation-duration:11.5s; animation-delay:2.1s;">💖</span>
+    <span style="left:55%; animation-duration:8.9s; animation-delay:1.3s;">💗</span>
+    <span style="left:85%; animation-duration:10.7s; animation-delay:2.4s;">💞</span>
+  </div>
+
+  <main class="wrap">
+    <section class="card" aria-label="Get well soon message">
+      <header>
+        <h1>For my sweet girl 🍨💖</h1>
+        <p>Select which one you want my love 💕</p>
+      </header>
+
+      <div class="gallery" role="group" aria-label="Pick a treat">
+        <figure tabindex="0" data-kind="chocolates" aria-label="Chocolates choice">
+          <img class="pic" src="chocolate.jpg" alt="Stack of chocolate bars with cocoa nibs">
+          <figcaption><span class="tag">cozy</span> Chocolates</figcaption>
+        </figure>
+
+        <figure tabindex="0" data-kind="cake" aria-label="Cake choice">
+          <img class="pic" src="cake.jpg" alt="Delicious chocolate cake with frosting">
+          <figcaption><span class="tag">sweet</span> Cake</figcaption>
+        </figure>
+      </div>
+
+      <div class="secret">
+        <button id="secretBtn" aria-expanded="false" aria-controls="secretMsg">Secret Message 💌</button>
+        <div id="secretMsg" class="hidden-msg" role="status" aria-live="polite">
+          Get well soon my little bachaa 💖 I love you sooo much!
+        </div>
+      </div>
+
+
+    </section>
+  </main>
+
+  <!-- modal -->
+  <div class="modal" id="modal" aria-modal="true" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+    <div class="modal-card">
+      <button class="close-x" id="closeModal" aria-label="Close">×</button>
+      <h3 id="modalTitle">Hi sweetheart</h3>
+      <p id="modalDesc">Just a little note to make you smile.</p>
+    </div>
+  </div>
+
+<script>
+  (function(){
+    const qs = (s, el=document) => el.querySelector(s);
+    const qsa = (s, el=document) => Array.from(el.querySelectorAll(s));
+    const figures = qsa('figure[data-kind]');
+    const modal = qs('#modal');
+    const modalTitle = qs('#modalTitle');
+    const modalDesc = qs('#modalDesc');
+    const closeBtn = qs('#closeModal');
+    const secretBtn = qs('#secretBtn');
+    const secretMsg = qs('#secretMsg');
+
+    function openModal(kind){
+      if(kind === 'ice-cream'){
+        modalTitle.textContent = 'First, get well soon! 💗';
+        modalDesc.textContent = 'Rest up, hydrate, and let me pamper you.';
+      }else if(kind === 'cake'){
+        modalTitle.textContent = 'No idiot! 😤';
+        modalDesc.textContent = 'You will rest, drink more water and rest! 💧';
+      }else{
+        modalTitle.textContent = 'Achha my cuddle! 💝';
+        modalDesc.textContent = 'You want chocolates? No no! Get better first! 🍫';
+      }
+      modal.classList.add('show');
+      closeBtn.focus({preventScroll:true});
+      const card = modal.querySelector('.modal-card');
+      card.style.animation = 'none';
+      requestAnimationFrame(()=>{ card.style.animation = ''; });
+    }
+    function closeModal(){ modal.classList.remove('show'); }
+
+    figures.forEach(fig=>{
+      fig.addEventListener('pointerdown', e=>{ fig._dx=e.clientX; fig._dy=e.clientY; });
+      fig.addEventListener('pointerup', e=>{
+        if(Math.abs(e.clientX-(fig._dx??e.clientX))<5 && Math.abs(e.clientY-(fig._dy??e.clientY))<5){
+          openModal(fig.dataset.kind);
+        }
+      });
+      fig.addEventListener('keydown', e=>{
+        if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openModal(fig.dataset.kind); }
+      });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
+    window.addEventListener('keydown', e=>{ if(e.key==='Escape' && modal.classList.contains('show')) closeModal(); });
+
+    secretBtn.addEventListener('click', ()=>{
+      const open = secretMsg.classList.toggle('show');
+      secretBtn.setAttribute('aria-expanded', String(open));
+      if(open){
+        secretMsg.style.animation = 'none';
+        requestAnimationFrame(()=>{ secretMsg.style.animation=''; });
+      }
+    });
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if(prefersReduced.matches){
+      document.documentElement.style.setProperty('--transition','0ms');
+      qsa('.hearts span').forEach(s=> s.style.animation='none');
+    }
+  })();
+</script>
+</body>
+</html>
+
+
